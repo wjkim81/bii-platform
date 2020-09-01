@@ -1,0 +1,751 @@
+<!--[if IE]><![endif]-->
+<!DOCTYPE html>
+<html lang="ko" class="no-js is-lg">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="content-language" content="kr" />
+<meta http-equiv="imagetoolbar" content="no" />
+<title>AI-powered Prediction of Cancer Risk</title>
+<meta name="title" content="chunjae education" />
+<meta name="description" content="chunjae education" />
+<meta name="copyright" content="chunjae education" />
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1, initial-scale=1" />
+<link rel="apple-touch-icon" "{{ url_for('static', filename = 'img/apple-touch-icon.png') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/normalize-3.0.2.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/jquery-ui.min.css')}}" /><!-- additional css -->
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/jquery.flipster.min.css')}}" /><!-- additional css -->
+<script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');</script>
+<script src = "{{ url_for('static', filename = 'js/vendor/modernizr.custom.2.8.3.min.js') }}" ></script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="../js/vendor/jquery-1.11.2.min.js"></script>
+<![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <!--> <script "{{ url_for('static', filename = 'js/vendor/jquery-2.1.3.min.js') }}"></script> <!--<![endif]-->
+<script>window.jQuery || document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>')</script>
+<style>
+
+.ui-slider-handle
+{
+    width:3em !important;
+    height:1.4em !important;
+    top:50% !important;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+}
+</style>
+
+</head>
+<body class="page-home"><!-- body class -->
+
+<div id="skipNavigation">
+    <a href="#contents">컨텐츠 바로가기</a>
+</div>
+
+<div id="container"><!-- container -->
+
+    <h1 class="sr-only">AI-powered Prediction of Cancer Risk</h1>
+
+    <div id="wrap"><!-- wrap -->
+
+        <div id="innerWrap"><!-- innerWrap -->
+
+            <h2 class="sr-only">컨텐츠 영역</h2>
+
+            <div id="header"><!-- header -->
+                <h2 class="sr-only">헤더영역</h2>
+
+                <div class="container upper"><!-- upper -->
+                    <div class="wrap">
+                        <div class="grid">
+                            <div class="col col-1-2 logo">
+                                <a href="home.html"><i class="icon"><em>AI-powered Prediction of Cancer Risk</em></i></a>
+                            </div>
+                            <div class="col col-1-2 utill">
+                                <i class="icon"><em>바이오 의료 이미지 인포매틱스기술개발 사업단</em></i>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- // upper -->
+
+                <div class="container downer"><!-- downer -->
+                    <div class="wrap">
+                        <div class="grid">
+                            <div class="col d1 in">
+                                <a href="/home" class="d1"><span>Home</span></a>
+                            </div>
+                            <div class="col d1">
+                                <a href="/about" class="d1"><span>About</span></a>
+                            </div>
+                            <div class="col d1">
+                                <a href="/contact" class="d1"><span>Contact</span></a>
+                            </div>
+                            <div class="col d1">
+                                <a href="/disclaimer" class="d1"><span>Legal</span></a>
+                                <div class="d2">
+                                    <ul class="reset">
+                                        <li><a href="/disclaimer" class="d2"><span>Disclaimer</span></a></li>
+                                        <li><a href="/algorithm" class="d2"><span>Algorithm</span></a></li>
+                                        <li><a href="/privacy" class="d2"><span>Privacy Policy</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- // upper -->
+            </div><!-- // header -->
+
+            <div id="contents"><!-- contents -->
+
+                <h2 class="sr-only">컨텐츠 영역</h2>
+
+
+                <div class="section-calculate"><!-- section-calculate -->
+                    <div class="wrap">
+
+                    <form method="post" id="predictForm" action="/predict" enctype="multipart/form-data">
+                    <input type="hidden" name="test" value="test000000"/>
+                    <div class="items-wrap"><!-- items-wrap -->
+                        <div class="grid">
+                            <div class="col col-1-2">
+                                <div class="module">
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="Adenocarcinoma(AD)/Squamous cell carcinoma(SC) 비소세포암 중 대표 적인 암종으로 암종의 종류에 따라 치료 및 예후가 달라 주요한 변수">
+                                                <span class="desc">AD/SC</span>
+                                                <span class="core">암종</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid">
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="adsc1" name="adsc" value="ad" checked="checked" />
+                                                <label for="adsc1">AD</label>
+                                            </div>
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="adsc2" name="adsc" value="sc"/>
+                                                <label for="adsc2">SC</label>
+                                            </div>
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="암의 크기 및 범위를 나타내는 지표. T다음의 숫자가 높을수록 종양이 커지거나 더 가까이에 있는 조직으로 자람.">
+                                                <span class="desc">T stage</span>
+                                                <span class="core">암의 크기 및 범위</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid">
+                                            <div class="col col-1-3">
+                                                <input type="radio" id="t1" name="tstage" value="t1" checked="checked" />
+                                                <label for="t1">T1</label>
+                                            </div>
+                                            <div class="col col-1-3">
+                                                <input type="radio" id="t2" name="tstage" value="t2"/>
+                                                <label for="t2">T2</label>
+                                            </div>
+                                            <div class="col col-1-3">
+                                                <input type="radio" id="t3" name="tstage" value="t3"/>
+                                                <label for="t3">T3 이상</label>
+                                            </div>
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="암이 있는 림프절의 수와 위치를 나타냄. N 이후의 숫자가 높을수록 암을 포함하는 림프절이 많아짐.">
+                                                <span class="desc">N stage</span>
+                                                <span class="core">림프절의 수와 위치</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid">
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="n1" name="nstage" value="n1" checked="checked" />
+                                                <label for="n1">N1</label>
+                                            </div>
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="n2" name="nstage" value="n2"/>
+                                                <label for="n2">N2 이상</label>
+                                            </div>
+                                            <!--
+                                            <div class="col col-1-3">
+                                                <input type="radio" id="n3" name="n" />
+                                                <label for="n3">N3</label>
+                                            </div>-->
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="암세포 제거 수술 후에 잔류하는 암 조직의 크기를 나타내는 데, 잔류 범위가 클수록 예후가 좋지 않음.">
+                                                <span class="desc">Residual tumor</span>
+                                                <span class="core">잔류 암조직의 크기</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid">
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="tumor1" name="tumor" value="r0" checked="checked" />
+                                                <label for="tumor1">R0</label>
+                                            </div>
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="tumor2" name="tumor" value="r1"/>
+                                                <label for="tumor2">R1</label>
+                                            </div>
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="Visceral pleural invasion (VPI)은 비소 세포 폐암 (NSCLC)의 좋지 않은 예후(aggressive sign)와 상관 관계가 있음이 입증.">
+                                                <span class="desc">Pathology-visceral</span>
+                                                <span class="desc">Pleural</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid">
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="pvp1" name="pleural" value="plus" checked="checked" />
+                                                <label for="pvp1">+</label>
+                                            </div>
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="pvp2" name="pleural" value="minus"/>
+                                                <label for="pvp2">-</label>
+                                            </div>
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="Lymphovascular space invasion (LVI) 은 비소 세포 폐암 (NSCLC)의 좋지 않은 예후(aggressive sign)와 상관 관계가 있음이 입증.">
+                                                <span class="desc">Pathology-<br/>lymphovascular</span>
+                                                <span class="desc">Invasion</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid">
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="pli1" name="lymphovascular" value="plus" checked="checked" />
+                                                <label for="pli1">+</label>
+                                            </div>
+                                            <div class="col col-1-2">
+                                                <input type="radio" id="pli2" name="lymphovascular" value="minus"/>
+                                                <label for="pli2">-</label>
+                                            </div>
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="나이는 예후에 주요한 영향을 끼치는 변수임"><!-- a 링크 추가 2019-05-28 -->
+                                                <span class="desc">Age at diagnosis</span>
+                                                <span class="core">나이</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid" id="age-slider">
+                                            <div id="age-handle" class="ui-slider-handle"></div>
+                                            <span style="float:left;margin-top:20px">44</span>
+                                            <span style="float:right;margin-top:20px">91</span>
+                                            <br/><br/>
+                                            <input type="hidden" id="agevalue" name="age" value="44" />
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="전이된 림프 노드의 개수를 나태내며 수치가 높을수록 비소 세포 폐암 (NSCLC)의 좋지 않은 예후와 상관 관계가 있음"><!-- a 링크 추가 2019-05-28 -->
+                                                <span class="desc">Pathology-lymph Node</span>
+                                                <span class="core">전이된 림프 노드</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid" id="pln-slider">
+                                            <div id="pln-handle" class="ui-slider-handle"></div>
+                                            <span style="float:left;margin-top:20px">0</span>
+                                            <span style="float:right;margin-top:20px">10</span>
+                                            <br/><br/>
+                                            <input type="hidden" id="plnvalue" name="lymph_node" value="0" />
+                                        </div>
+                                    </div>
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="가장 큰 종양 면적을 가지는 Axial 슬라이스 영상">
+                                                <span class="desc">CT Slice Image</span>
+                                                <span class="core">CT 대표 슬라이스 이미지</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid">
+                                            <input type="file" name ="img_file" class="text file full" />
+                                        </div>
+                                    </div><!-- // item -->
+
+
+
+                                </div>
+                            </div>
+                            <div class="col col-1-2">
+                                <div class="module">
+
+
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="혈액 내의 헤모글로빈 수치를 나타내고 있으며, 낮은 헤모글로빈 수준은 환자의 생존율 감소 및 재발률 상승과 관련이 있음.">
+                                                <span class="desc">Hg</span>
+                                                <span class="core">헤모글로빈</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid" id="hg-slider" >
+                                            <div id="hg-handle" class="ui-slider-handle"></div>
+                                            <span style="float:left;margin-top:20px">6</span>
+                                            <span style="float:right;margin-top:20px">16</span>
+                                            <br/><br/>
+                                            <input type="text" id="hgvalue" name="hg" tyle="width:300px" onchange="javascript:fn_syncHg();" value="6" />
+                                        </div>
+                                        <!--
+                                        <div class="grid">
+                                            <div class="col col-1-3">
+                                                <span>~17.5</span>
+                                                <input type="radio" id="hg1" name="hg" checked="checked" />
+                                                <label for="hg1">H</label>
+                                            </div>
+                                            <div class="col col-1-3">
+                                                <span>13 ~ 17.5</span>
+                                                <input type="radio" id="hg2" name="hg" />
+                                                <label for="hg2">N</label>
+                                            </div>
+                                            <div class="col col-1-3">
+                                                <span>13 ~</span>
+                                                <input type="radio" id="hg3" name="hg" />
+                                                <label for="hg3">L</label>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="혈액 내의 헤모글로빈 수치를 나타내고 있으며, 낮은 헤모글로빈 수준은 환자의 생존율 감소 및 재발률 상승과 관련이 있음.">
+                                                <span class="desc">ALT</span>
+                                                <span class="core">간기능검사</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid" id="alt-slider" >
+                                            <div id="alt-handle" class="ui-slider-handle"></div>
+                                            <span style="float:left;margin-top:20px">2</span>
+                                            <span style="float:right;margin-top:20px">185</span>
+                                            <br/><br/>
+                                            <input type="text" id="altvalue" name="alt" tyle="width:300px" onchange="javascript:fn_syncALT();" value="2" />
+                                        </div>
+                                        <!--
+                                        <div class="grid">
+                                            <div class="col col-1-3">
+                                                <span>~17.5</span>
+                                                <input type="radio" id="hg1" name="hg" checked="checked" />
+                                                <label for="hg1">H</label>
+                                            </div>
+                                            <div class="col col-1-3">
+                                                <span>13 ~ 17.5</span>
+                                                <input type="radio" id="hg2" name="hg" />
+                                                <label for="hg2">N</label>
+                                            </div>
+                                            <div class="col col-1-3">
+                                                <span>13 ~</span>
+                                                <input type="radio" id="hg3" name="hg" />
+                                                <label for="hg3">L</label>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="높은 NLR(Neutrophil-to-Lymphocyte Ratio) 수치는 재발률 상승 및 좋지 않은 예후와 상관 관계가 있음.">
+                                                <span class="desc">NLR</span>
+                                                <span class="core">호중구-림프구 비</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid" id="nlr-slider">
+                                            <div id="nlr-handle" class="ui-slider-handle"></div>
+                                            <span style="float:left;margin-top:20px;margin-bottom: 15px;">0</span>
+                                            <span style="float:right;margin-top:20px;margin-bottom: 15px;">206</span>
+                                            <br/><br/>
+                                            <input type="text" id="nlrvalue" name="nlr" style="width:300px" onchange="javascript:fn_syncNlr();" value="0" />
+
+                                            <!-- <div class="col col-1-3">
+                                                <span>-76</span>
+                                                <input type="radio" id="nlr1" name="nlr" checked="checked" />
+                                                <label for="nlr1">H</label>
+                                            </div>
+                                            <div class="col col-1-3">
+                                                <span>76-</span>
+                                                <input type="radio" id="nlr2" name="nlr" />
+                                                <label for="nlr2">N</label>
+                                            </div> -->
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="낮은 PNR(Platelet to segmented Neutrophil Ratio) 수치는 재발률 상승 및 좋지 않은 예후와 상관 관계가 있음.">
+                                                <span class="desc">PNR</span>
+                                                <span class="core">혈소판-분절형호중구 비</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid" id="pnr-slider">
+                                            <div id="pnr-handle" class="ui-slider-handle"></div>
+                                            <span style="float:left;margin-top:20px;margin-bottom: 15px;">0</span>
+                                            <span style="float:right;margin-top:20px;margin-bottom: 15px;">516</span>
+                                            <br/><br/>
+                                            <input type="text" id="pnrvalue" name="pnr" style="width:300px" onchange="javascript:fn_syncPnr();" value="0" />
+
+                                            <!-- <div class="col col-1-3">
+                                                <span>-76</span>
+                                                <input type="radio" id="nlr1" name="nlr" checked="checked" />
+                                                <label for="nlr1">H</label>
+                                            </div>
+                                            <div class="col col-1-3">
+                                                <span>76-</span>
+                                                <input type="radio" id="nlr2" name="nlr" />
+                                                <label for="nlr2">N</label>
+                                            </div> -->
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="암환자의 영양상태를 나타내기 위해 흔히 활용되는 지표이며, 낮은 albumin 값은 좋지 못한 영양상태를 나타내며 좋지 않은 예후와 연관이 있음.">
+                                                <span class="desc">Albumin</span>
+                                                <span class="core">알부민</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid" id="alb-slider">
+                                            <div id="alb-handle" class="ui-slider-handle"></div>
+                                            <span style="float:left;margin-top:20px;margin-bottom: 15px;">1</span>
+                                            <span style="float:right;margin-top:20px;margin-bottom: 15px;">5</span>
+                                            <br/><br/>
+                                            <input type="text" id="albvalue" name="albumin" style="width:300px" onchange="javascript:fn_syncAlb();" value="1" />
+                                        </div>
+                                    </div><!-- // item -->
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="혈류 내 나트륨 수치를 나태내며, 낮은 sodium 수치는 재발률 상승 및 좋지 않은 예후와 상관 관계가 있음.">
+                                                <span class="desc">Sodium</span>
+                                                <span class="core">염도</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid" id="sod-slider">
+                                            <div id="sod-handle" class="ui-slider-handle"></div>
+                                            <span style="float:left;margin-top:20px;margin-bottom: 15px;">125</span>
+                                            <span style="float:right;margin-top:20px;margin-bottom: 15px;">145</span>
+                                            <br/><br/>
+                                            <input type="text" id="sodvalue" name="sodium" style="width:300px" onchange="javascript:fn_syncSod();" value="125" />
+                                        </div>
+                                    </div><!-- // item -->
+
+
+
+
+
+                                    <div class="item"><!-- item -->
+                                        <p class="subject">
+                                            <a href="#!" data-desc="대표 CT slice 영상 내 종양 분할 binary 이미지">
+                                                <span class="desc">Lesion-segmented Image</span>
+                                                <span class="core">종양 분할 레이블 이미지</span>
+                                            </a>
+                                        </p>
+                                        <div class="grid">
+                                            <input type="file" name ="label_file" class="text file full" />
+                                        </div>
+                                    </div><!-- // item -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- // items-wrap -->
+                    </form>
+
+                    <p class="notice">
+                        Treatment options and results will appear here when you have filled in<br />
+                        all the information needed above.
+                    </p>
+
+                    <div class="action">
+                        <button class="button" onclick="$('#resultDiv').hide();">Reset</button>
+                        <button class="button primary" onclick="calculate();">Calculate</button>
+                    </div>
+
+                    </div>
+                </div><!-- // section-calculate -->
+
+                <div class="section-result" id="resultDiv" style="display:none;"><!-- section-result -->
+                    <div class="wrap">
+                        <h1 class="title">Results</h1>
+                        <!--<div class="tab-a">
+                            <a href="#!" ><span>Recurrence</span></a>
+                            <a href="#!"><span>Recurrence</span></a>
+                        </div>-->
+                        <div class="wrap text-center">
+                            <div id="chartArea" style = "width: 550px; height: 400px; margin: 0 auto">
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- // section-result -->
+
+            </div><!-- // contents -->
+
+            <div id="footer"><!-- footer -->
+                <h2 class="sr-only">풋터 영역</h2>
+
+                <div class="container upper">
+                    <div class="wrap text-center">
+                        <img src="{{ url_for('static', filename = 'img/common/footer_banner.jpg')}}" alt="" />
+                    </div>
+                </div>
+
+                <div class="container downer">
+                    <div class="wrap text-center">
+                        COPYRIGHT(C) EWHA WOMANS UNIVERSITY &amp; VHS MEDICAL CENTER. ALL RIGHTS RESERVED.
+                    </div>
+                </div>
+            </div><!-- // footer -->
+
+        </div><!-- // contents -->
+
+    </div><!-- // wrap -->
+
+
+</div><!-- // container -->
+
+<script src="{{ url_for('static', filename = 'js/vendor/jquery.form.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/vendor/jquery-ui.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/ui.js') }}"></script>
+<script src = "https://code.highcharts.com/highcharts.js"></script>
+<script>
+    $(document).ready(function()
+    {
+
+    });
+
+    function displayChart( result ){
+      var chart = {
+             type: 'column'
+          };
+
+      var title = {
+             text: 'Recurrence'
+          };
+
+          var xAxis = {
+             categories: ['recurrence in 2years']
+          };
+
+          var yAxis = {
+             title: {
+                text: ''
+             },
+             plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+             }]
+          };
+
+          var tooltip = {
+             valueSuffix: '\xB0%'
+          };
+
+          var legend = {
+             enabled : true
+          };
+
+          var series =  [{
+                name : '2년 내 재발 확률',
+                data: [ result ]
+             }
+          ];
+
+          var json = {};
+          json.chart = chart;
+          json.title = title;
+          json.xAxis = xAxis;
+          json.yAxis = yAxis;
+          json.tooltip = tooltip;
+          json.series = series;
+
+      $('#chartArea').highcharts(json);
+    }
+
+$( function() {
+
+    var hghandle = $( "#hg-handle" );
+    $( "#hg-slider" ).slider({
+      min:6,
+      max:16,
+      step:0.1,
+      animate:true,
+      create: function() {
+        hghandle.text( $( this ).slider( "value" ) );
+
+      },
+      slide: function( event, ui ) {
+        hghandle.text( ui.value );
+        $("#hgvalue").val( ui.value);
+      }
+
+    });
+
+    var althandle = $( "#alt-handle" );
+    $( "#alt-slider" ).slider({
+      min:2,
+      max:185,
+      step:0.1,
+      animate:true,
+      create: function() {
+        althandle.text( $( this ).slider( "value" ) );
+
+      },
+      slide: function( event, ui ) {
+        althandle.text( ui.value );
+        $("#altvalue").val( ui.value);
+      }
+
+    });
+
+    var ageHandle = $("#age-handle");
+    $( "#age-slider" ).slider({
+      min:44,
+      max:91,
+      step:1,
+      animate:true,
+      create: function() {
+        ageHandle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        ageHandle.text( ui.value );
+        $("#agevalue").val(ui.value);
+      }
+    });
+
+    var nlrHandle = $("#nlr-handle");
+    $( "#nlr-slider" ).slider({
+      min:0,
+      max:206,
+      step:0.1,
+      animate:true,
+      create: function() {
+        nlrHandle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        nlrHandle.text( ui.value );
+        $("#nlrvalue").val( ui.value);
+      }
+    });
+
+    var pnrHandle = $("#pnr-handle");
+    $( "#pnr-slider" ).slider({
+      min:0,
+      max:516,
+      step:0.1,
+      animate:true,
+      create: function() {
+        pnrHandle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        pnrHandle.text( ui.value );
+        $("#pnrvalue").val( ui.value);
+      }
+    });
+
+    var plnHandle = $("#pln-handle");
+    $( "#pln-slider" ).slider({
+      min:0,
+      max:10,
+      step:1,
+      animate:true,
+      create: function() {
+        plnHandle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        plnHandle.text( ui.value );
+        $("#plnvalue").val(ui.value);
+      }
+    });
+
+    var albHandle = $("#alb-handle");
+    $( "#alb-slider" ).slider({
+      min:1,
+      max:5,
+      step:0.1,
+      animate:true,
+      create: function() {
+        albHandle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        albHandle.text( ui.value );
+        $("#albvalue").val( ui.value);
+      }
+    });
+
+    var sodHandle = $("#sod-handle");
+    $( "#sod-slider" ).slider({
+      min:125,
+      max:145,
+      step:0.1,
+      animate:true,
+      create: function() {
+        sodHandle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        sodHandle.text( ui.value );
+        $("#sodvalue").val( ui.value);
+      }
+    });
+  } );
+
+function calculate()
+{
+    //alert('test');
+
+    $("#predictForm").ajaxForm({
+        success: function(response) {
+            //alert( JSON.stringify(response.result) );
+
+            //var result = parseFloat(response.result).toFixed(2);
+            //displayChart(result);
+            displayChart(response.result);
+            $('#resultDiv').show();
+        },
+        error: function(xhr, status, response) {
+            var err = JSON.parse(xhr.responseText);
+            alert(err.message);
+        }
+    }).submit();
+}
+function fn_syncHg(){
+    $( "#hg-slider" ).slider("value", $("#hgvalue").val());
+    $( "#hg-handle" ).text($("#hgvalue").val());
+}
+function fn_syncALT(){
+    $( "#alt-slider" ).slider("value", $("#altvalue").val());
+    $( "#alt-handle" ).text($("#altvalue").val());
+}
+function fn_syncNlr(){
+    $( "#nlr-slider" ).slider("value", $("#nlrvalue").val());
+    $( "#nlr-handle" ).text($("#nlrvalue").val());
+}
+function fn_syncPnr(){
+    $( "#pnr-slider" ).slider("value", $("#pnrvalue").val());
+    $( "#pnr-handle" ).text($("#pnrvalue").val());
+}
+function fn_syncAlb(){
+    $( "#alb-slider" ).slider("value", $("#albvalue").val());
+    $( "#alb-handle" ).text($("#albvalue").val());
+}
+function fn_syncSod(){
+    $( "#sod-slider" ).slider("value", $("#sodvalue").val());
+    $( "#sod-handle" ).text($("#sodvalue").val());
+}
+</script>
+</body>
+</html>
